@@ -28,7 +28,7 @@ function App()
         <BrowserRouter>
             <Routes>
                 <Route exact path="/" element={<LoginBar session={ session }/>}/>
-                <Route exact path="/" element={<Account key={ session.user.id } session={ session} />}/>
+                {/* <Route exact path="/" element={<Account key={ session.user.id } session={ session} />}/> */}
                 
                 
 

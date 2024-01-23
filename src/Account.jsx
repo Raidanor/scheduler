@@ -6,6 +6,7 @@ import Avatar from './Avatar'
 export default function Account({ session }) {
     const [loading, setLoading] = useState(true)
     const [username, setUsername] = useState(null)
+    const [fullname, setFullname] = useState(null)
     const [website, setWebsite] = useState(null)
     const [avatar_url, setAvatarUrl] = useState(null)
 
@@ -59,6 +60,7 @@ export default function Account({ session }) {
         {
             id: user.id,
             username,
+            fullname,
             website,
             avatar_url,
             updated_at: new Date(),
@@ -103,6 +105,19 @@ export default function Account({ session }) {
             onChange={(e) => setUsername(e.target.value)}
             />
         </div>
+
+        <div>
+            <label htmlFor="fullname">Full name</label>
+            <input
+            id="fullname"
+            type="text"
+            required
+            value={fullname || ''}
+            onChange={(e) => setFullname(e.target.value)}
+            />
+        </div>
+
+
         <div>
             <label htmlFor="website">Website</label>
             <input
