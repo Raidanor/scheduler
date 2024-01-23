@@ -78,7 +78,7 @@ export default function Account({ session }) {
     }
 
     return (
-        <form onSubmit={updateProfile} className="form-widget">
+        <form onSubmit={ updateProfile } className="form-widget">
         
         <Avatar 
             url = { avatar_url }
@@ -121,7 +121,7 @@ export default function Account({ session }) {
 
         <div>
             <button className="button block" type="button" onClick={() => supabase.auth.signOut()}>
-            Sign Out
+                Sign Out
             </button>
         </div>
         </form>
