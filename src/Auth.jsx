@@ -41,7 +41,7 @@ export default function Auth() {
                 </div>
                 <div>
                     <button className={'button block'} disabled={loading}>
-                    {loading ? <span>Loading</span> : <span>Send magic link</span>}
+                        {loading ? <span>Loading</span> : <span>Send magic link</span>}
                     </button>
                 </div>
                 </form>
