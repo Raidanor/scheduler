@@ -1,10 +1,15 @@
 import './App.css'
 import { useState, useEffect } from 'react'
 import { supabase } from './supabaseClient'
+
+//importing components
 import Auth from './Auth'
 import Account from './Account'
+import Navbar from './components/Navbar'
+import Schedule from './components/Schedule'
 
-//react ronuting
+
+//react routing
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
 
@@ -26,8 +31,11 @@ function App()
 
     return (
         <BrowserRouter>
+            <Navbar />
             <Routes>
                 <Route exact path="/" element={<LoginBar session={ session }/>}/>
+                <Route exact path="/schedule" element={<Schedule />}/>
+                
                 {/* <Route exact path="/" element={<Account key={ session.user.id } session={ session} />}/> */}
                 
                 

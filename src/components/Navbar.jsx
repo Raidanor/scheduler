@@ -16,14 +16,9 @@ function Navbar()
                             <a class="nav-link active" aria-current="page"><Link to="/">Home</Link></a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link"><Link to="/Europe">Europe Quiz</Link></a>
+                            <a class="nav-link active" aria-current="page"><Link to="/Schedule">Schedule</Link></a>
                         </li>
-                        <li class="nav-item">
-                            <a class="nav-link"><Link to="/English">English Quiz</Link></a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link"><Link to="/CustomQuiz">Custom Quiz</Link></a>
-                        </li>
+                        
                     </ul>
                     {/* <form class="d-flex">
                         <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" />
