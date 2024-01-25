@@ -6,6 +6,11 @@ export default function Avatar( { url, size, onUpload })
     const [avatarUrl, setAvatarUrl] = useState(null)
     const [uploading, setUploading] = useState(false)
 
+    
+
+    //check to see if user is already logged in
+    //const user = supabase.auth.user()
+
     useEffect( () => 
     {
         if (url)
