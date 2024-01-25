@@ -33,7 +33,7 @@ function App()
         <BrowserRouter>
             <Navbar />
             <Routes>
-                <Route exact path="/" element={<LoginBar session={ session }/>}/>
+                <Route exact path="/" element={<Login session={ session }/>}/>
                 <Route exact path="/schedule" element={<Schedule />}/>
                 
                 {/* <Route exact path="/" element={<Account key={ session.user.id } session={ session} />}/> */}
@@ -47,7 +47,7 @@ function App()
     )
 }
 
-function LoginBar( props )
+function Login( props )
 {
     return(
         <div className="container" style={{ padding: '50px 0 100px 0' }}>

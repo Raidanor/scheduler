@@ -39,8 +39,9 @@ export default function Account({ session })
 
         getProfile()
 
-        return () => {
-        ignore = true
+        return () => 
+        {
+            ignore = true
         }
     }, [session])
 
@@ -72,11 +73,11 @@ export default function Account({ session })
 
     return (
         <form onSubmit={updateProfile} className="form-widget">
-            <Avatar 
-                url="avatar_url"
-                size={ 150 }
-                onUpload = { (event, url) => {
-                        updateProfile(event, url)
+            <Avatar
+                url={avatar_url}
+                size={150}
+                onUpload={(event, url) => {
+                    updateProfile(event, url)
                 }}
             />
             <div>

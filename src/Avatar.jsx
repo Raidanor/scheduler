@@ -18,7 +18,7 @@ export default function Avatar( { url, size, onUpload })
     {
         try
         {
-            const { data, error } = await supabase.from('avatars').dwonload(path)
+            const { data, error } = await supabase.from('avatars').download(path)
 
             if (error)
             {
