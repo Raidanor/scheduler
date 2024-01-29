@@ -1,12 +1,16 @@
 import { useState, useEffect } from 'react'
 import { supabase } from '../supabaseClient'
 
+//components
+import Week from './Week.jsx';
+
 function Schedule()
 {
 
     return(
         <>
-            Scheduer Place holder text
+            Schedule Place holder text
+            <Week />
         </>
     )
 }
