@@ -5,9 +5,9 @@ function Schedule()
 {
 
     return(
-        <div>
-            This is the schedule compoentntt
-        </div>
+        <>
+            Scheduer Place holder text
+        </>
     )
 }
 

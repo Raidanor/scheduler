@@ -23,6 +23,8 @@ export default function Avatar( { url, size, onUpload })
     {
         try
         {
+            //for some reason this function does not work
+            //avatar image cannot be displayed thus
             const { data, error } = await supabase.from('avatars').download(path)
 
             if (error)
