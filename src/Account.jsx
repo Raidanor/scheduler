@@ -8,6 +8,7 @@ export default function Account({ session })
     const [username, setUsername] = useState(null)
     const [full_name, setFullname] = useState(null)
     const [website, setWebsite] = useState(null)
+    const [mobile_number, setMobile_number] = useState(null)
     const [avatar_url, setAvatarUrl] = useState(null)
 
     useEffect(() => {
@@ -18,7 +19,7 @@ export default function Account({ session })
 
         const { data, error } = await supabase
             .from('profiles')
-            .select(`username, website, full_name, avatar_url`)
+            .select(`username, website, full_name, avatar_url, mobile_number`)
             .eq('id', user.id)
             .single()
 
@@ -31,6 +32,7 @@ export default function Account({ session })
                 setFullname(data.full_name)
                 setWebsite(data.website)
                 setAvatarUrl(data.avatar_url)
+                setMobile_number(data.mobile_number)
             }
         }
 
@@ -58,6 +60,7 @@ export default function Account({ session })
             website,
             full_name,
             avatar_url,
+            mobile_number,
             updated_at: new Date(),
         }
 
@@ -88,33 +91,45 @@ export default function Account({ session })
             <div>
                 <label htmlFor="username">Username</label>
                 <input
-                id="username"
-                type="text"
-                required
-                value={username || ''}
-                placeholder='Must be unique'
-                onChange={(e) => setUsername(e.target.value)}
+                    id="username"
+                    type="text"
+                    required
+                    value={username || ''}
+                    placeholder='Must be unique'
+                    onChange={(e) => setUsername(e.target.value)}
                 />
             </div>
 
             <div>
                 <label htmlFor="full_name">Name</label>
                 <input
-                id="full_name"
-                type="text"
-                required
-                value={full_name || ''}
-                onChange={(e) => setFullname(e.target.value)}
+                    id="full_name"
+                    type="text"
+                    required
+                    value={full_name || ''}
+                    onChange={(e) => setFullname(e.target.value)}
                 />
             </div>
 
             <div>
                 <label htmlFor="website">Website</label>
                 <input
-                id="website"
-                type="text"
-                value={website || ''}
-                onChange={(e) => setWebsite(e.target.value)}
+                    id="website"
+                    type="text"
+                    value={website || ''}
+                    onChange={(e) => setWebsite(e.target.value)}
+                />
+            </div>
+
+            <div>
+                <label htmlFor="mobile_number">Mobile Number</label>
+                <input
+                    id="mobile_number"
+                    type="int"
+                    value={mobile_number || ''}
+                    required
+                    placeholder='11122223333(No dashes)'
+                    onChange={(e) => setMobile_number(e.target.value)}
                 />
             </div>
 

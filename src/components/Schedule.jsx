@@ -10,7 +10,7 @@ function Schedule()
     return(
         <>
             Schedule Place holder text
-            <Week />
+            
         </>
     )
 }
