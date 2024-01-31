@@ -63,23 +63,24 @@ function Learner()
         }
     }
 
+// --------------------------------------------------------------------------------------------------------------------------------------------------------
 
     return(
         <>
-            <div className="container pt-3">
+            <div className="container-fluid pt-3">
                 <div className="row">
-
                     <div className="col-6 border m-2">
                         <div>
                             This list contains the firstname, lastname and school of everyone who was born in the year 2020
                         </div>
 
-                        {/* outputs the list of school2020 */}
+                        {/* outputs the list of year */}
                         {fetchError && (<p>{fetchError}</p>)}
                         {year &&
                             <>
                                 <div className="container-fluid">
                                     <ul>
+                                        {/* javascript .map function */}
                                         {year.map(record => 
                                             <li>
                                                 {record.firstname} &nbsp;
@@ -99,7 +100,7 @@ function Learner()
                             This list contains the firstname and yearofbirth of everyone goes to crime university
                         </div>
 
-                        {/* outputs the list of school2020 */}
+                        {/* outputs the list of school */}
                         {fetchError && (<p>{fetchError}</p>)}
                         {school &&
                             <>
