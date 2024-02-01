@@ -15,6 +15,8 @@ function Navbar()
                     <div className="navbar-nav">
                         <a className="nav-link active" aria-current="page"><Link to="/">Home</Link></a>
                         <a className="nav-link"><Link to="/Schedule">Schedule</Link></a>
+                        <a className="nav-link"><Link to="/learner">Learner</Link></a>
+                        
                         {/* <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> */}
                     </div>
                 </div>

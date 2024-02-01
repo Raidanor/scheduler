@@ -6,7 +6,7 @@ import FullCalendar from '@fullcalendar/react'
 import dayGridPlugin from '@fullcalendar/daygrid' // a plugin!
 
 //components
-import Learner from './Learner';
+//import Learner from './Learner';
 
 function Schedule()
 {
@@ -14,8 +14,6 @@ function Schedule()
     return(
         <>
             Schedule Place holder text
-            <Learner />
-
             <FullCalendar
                 plugins = { [ dayGridPlugin ]}
                 initialView = "dayGridMonth"
