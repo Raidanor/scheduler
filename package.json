@@ -12,6 +12,7 @@
   "dependencies": {
     "@fullcalendar/core": "^6.1.10",
     "@fullcalendar/daygrid": "^6.1.10",
+    "@fullcalendar/interaction": "^6.1.10",
     "@fullcalendar/react": "^6.1.10",
     "@popperjs/core": "^2.11.8",
     "@supabase/supabase-js": "^2.39.3",

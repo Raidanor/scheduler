@@ -5,7 +5,7 @@ function Navbar()
     return(
 
         <>
-        <nav className="navbar navbar-expand-md navbar-light bg-light">
+        <nav className="navbar navbar-expand-md navbar-light bg-light w-100">
             <div className="container-fluid">
                 <a className="navbar-brand" href="#">Navbar</a>
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
@@ -14,7 +14,7 @@ function Navbar()
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <ul className="navbar-nav ml-auto">
                         <li className="nav-link active" aria-current="page"><Link to="/" id="home">Home</Link></li>
-                        <li className="nav-link"><Link to="/Schedule">Schedule</Link></li>
+                        <li className="nav-link"><Link to="/schedule">Schedule</Link></li>
                         <li className="nav-link"><Link to="/learner">Learner</Link></li>
                         
                         {/* <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> */}
