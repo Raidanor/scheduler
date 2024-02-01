@@ -12,13 +12,13 @@ function Navbar()
                     <span className="navbar-toggler-icon"></span>
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-                    <div className="navbar-nav">
-                        <a className="nav-link active" aria-current="page"><Link to="/">Home</Link></a>
-                        <a className="nav-link"><Link to="/Schedule">Schedule</Link></a>
-                        <a className="nav-link"><Link to="/learner">Learner</Link></a>
+                    <ul className="navbar-nav ml-auto">
+                        <li className="nav-link active" aria-current="page"><Link to="/" id="home">Home</Link></li>
+                        <li className="nav-link"><Link to="/Schedule">Schedule</Link></li>
+                        <li className="nav-link"><Link to="/learner">Learner</Link></li>
                         
                         {/* <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> */}
-                    </div>
+                    </ul>
                 </div>
             </div>
         </nav>
