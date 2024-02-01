@@ -46,6 +46,7 @@ function Learner()
             .from('test')
             .select('firstname, yearofbirth')
             .eq('school', temp)
+            
 
         if (error)
         {
