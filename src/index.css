@@ -319,3 +319,8 @@ button.primary,
     z-index: 99999 !important;
     color: #2a2a2a;
 }
+
+.popoverStyle p
+{
+    color: black;
+}
