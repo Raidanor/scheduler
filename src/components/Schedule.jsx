@@ -13,26 +13,34 @@ import interactionPlugin from "@fullcalendar/interaction"
 
 function Schedule()
 {
-    handleDateClick = (arg) =>
-    { // bind with an arrow function
-        alert(arg.dateStr)
-    }
+    // handleDateClick = (arg) =>
+    // { // bind with an arrow function
+    //     alert(arg.dateStr)
+    // }
 
     return(
         <>
-            Schedule Place holder text
-            <FullCalendar
-                plugins = { [ dayGridPlugin, interactionPlugin]}
-                initialView = "dayGridMonth"
-                events =
-                {[
-                    { title: "event 1", date: "2024-02-02"},
-                    { title: "event 2", date: "2024-02-03"},
-                    { title: "event 3", date: "2024-02-04"}
-                    
-                ]}
-                dateClick={handleDateClick}
-            />
+            <div className="m-2 pt-4">
+                <FullCalendar
+                    plugins = { [ dayGridPlugin, timeGridPlugin, interactionPlugin]}
+                    initialView = "dayGridMonth"
+                    events =
+                    {[
+                        { title: "event 1", date: "2024-02-02"},
+                        { title: "event 2", date: "2024-02-03"},
+                        { title: "event 3", date: "2024-02-04"}
+                        
+                    ]}
+                    headerToolbar = 
+                    {{
+                        start: "title",
+                        center: "today prev,next",
+                        end: "dayGridMonth, timeGridWeek timeGridDay"
+                    }}
+                    height = {"90vh"}
+                    // dateClick={handleDateClick}
+                />
+            </div>
             
         </>
     )
