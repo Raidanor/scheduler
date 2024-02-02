@@ -313,3 +313,9 @@ button.primary,
     border-top: 4px solid  ;
     background-color: #7a7a7a38;
 }
+
+.popoverStyle
+{
+    z-index: 99999 !important;
+    color: #2a2a2a;
+}

@@ -11,12 +11,21 @@ import interactionPlugin from "@fullcalendar/interaction"
 //components
 //import Learner from './Learner';
 
+//packages
+import * as bootstrap from "bootstrap"
+
 function Schedule()
 {
     // handleDateClick = (arg) =>
     // { // bind with an arrow function
     //     alert(arg.dateStr)
     // }
+    const events = 
+    [{
+        title: "event custom",
+        start: "2024-02-15T17:00:00",
+        end: "2024-02-15T22:00:00",
+    }]
 
     return(
         <>
@@ -24,13 +33,29 @@ function Schedule()
                 <FullCalendar
                     plugins = { [ dayGridPlugin, timeGridPlugin, interactionPlugin]}
                     initialView = "dayGridMonth"
-                    events =
-                    {[
-                        { title: "event 1", date: "2024-02-02"},
-                        { title: "event 2", date: "2024-02-03"},
-                        { title: "event 3", date: "2024-02-04"}
+                    // events =
+                    // {[
+                    //     { title: "event 1", date: "2024-02-02"},
+                    //     { title: "event 2", date: "2024-02-03"},
+                    //     { title: "event 3", date: "2024-02-04"}
                         
-                    ]}
+                    // ]}
+                    events = { events }
+                    eventDidMount = 
+                    {
+                        (info) => 
+                        {
+                            return new bootstrap.Popover(info.el, 
+                                {
+                                    title: info.event.title,
+                                    placement:"auto",
+                                    trigger: "hover",
+                                    customClass: "popoverStyle",
+                                    constent: "<p>Details for event etc...</p>",
+                                    html: true,
+                                })
+                        }
+                    }
                     headerToolbar = 
                     {{
                         start: "title",
