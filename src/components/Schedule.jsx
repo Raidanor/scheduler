@@ -51,7 +51,7 @@ function Schedule()
                                     placement:"auto",
                                     trigger: "hover",
                                     customClass: "popoverStyle",
-                                    constent: "<p>Details for event etc...</p>",
+                                    content: "<p>Details for event etc...</p>",
                                     html: true,
                                 })
                         }
