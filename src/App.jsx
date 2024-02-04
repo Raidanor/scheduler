@@ -8,6 +8,7 @@ import Account from './Account'
 import Navbar from './components/Navbar'
 import Schedule from './components/Schedule'
 import Learner from './components/Learner'
+import Planner from './components/Planner'
 
 
 
@@ -38,6 +39,7 @@ function App()
                 <Route exact path="/" element={<Login session={ session }/>}/>
                 <Route exact path="/schedule" element={<Schedule />}/>
                 <Route exact path="/learner" element={<Learner />} />
+				<Route exact path="/planner" element={<Planner />} />
                 
                 
                 {/* <Route exact path="/" element={<Account key={ session.user.id } session={ session} />}/> */}
