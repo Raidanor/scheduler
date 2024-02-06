@@ -13,7 +13,7 @@ function Navbar()
                 </button>
                 <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
                     <ul className="navbar-nav ml-auto">
-                        <li className="nav-link active" aria-current="page"><Link to="/" id="home">Home</Link></li>
+                        <li className="nav-link active" aria-current="page"><Link to="/" id="home"><a>Home</a></Link></li>
                         <li className="nav-link"><Link to="/schedule">Schedule</Link></li>
                         <li className="nav-link"><Link to="/learner">Learner</Link></li>
                         

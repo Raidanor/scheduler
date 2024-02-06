@@ -303,7 +303,14 @@ button.primary,
 .nav-link
 {
     border-top: 4px solid #ffffff00;
+    text-decoration: none;
 }
+
+.nav-link a
+{
+    text-decoration: none;
+}
+
 .nav-link:not(:last-child)
 {
     border-right: 1px solid;
