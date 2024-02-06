@@ -60,9 +60,9 @@ function Planner(){
 	
 
 	return (
-		<div className="container mt-5 text-white col-5">
+		<div className="container mt-5 col-6">
 			<h2 className="mb-4">Add Shift</h2>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={ handleSubmit }>
 				<div className="form-group">
 					<label>Title:</label>
 					<input
