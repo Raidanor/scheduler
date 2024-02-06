@@ -20,9 +20,10 @@ function Planner(){
 				console.error('Error fetching usernames', error);
 				return [];
 			}
-
-			setUsernameList(data);
-
+            else
+            {
+                setUsernameList(data);
+            }
 		}
 
 		getUsernames();
@@ -59,7 +60,7 @@ function Planner(){
 	
 
 	return (
-		<div className="container mt-5">
+		<div className="container mt-5 text-white col-5">
 			<h2 className="mb-4">Add Shift</h2>
 			<form onSubmit={handleSubmit}>
 				<div className="form-group">
@@ -76,7 +77,7 @@ function Planner(){
 					<textarea
 					className="form-control"
 					value={detail}
-					onChange={(e) => setDetail(e.target.value)}
+					onChange={(e) => setDetail( e.target.value )}
 					></textarea>
 				</div>
 				<div className="form-group">
@@ -110,7 +111,7 @@ function Planner(){
 					<label>Employee:</label>
 					<select
 						className="form-control"
-						value={selectedEmployee}
+						value={ selectedEmployee }
 						onChange={(e) => setSelectedEmployee(e.target.value)}
 					>
 					<option value="">Choose the employee</option>
