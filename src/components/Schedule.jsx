@@ -20,13 +20,45 @@ function Schedule()
     // { // bind with an arrow function
     //     alert(arg.dateStr)
     // }
+	const [events, setEvents] = useState([]);
+
+	useEffect(() => {
+		async function getTask(){
+			const { data, error } = await supabase
+			.from('task')
+			.select('id, title, detail, date, start_time, end_time, username')
+
+			if (error) {
+				console.error('Error fetching data', error);
+				return [];
+			}
+
+			const formattedEvents = data.map(task => ({
+				id: task.id,
+				title: task.title,
+				start: task.date + 'T' + task.start_time,
+				end: task.date + 'T' + task.end_time,
+				extendedProps: {
+					detail: task.detail,
+					username: task.username
+				}
+			}));
+			console.log(data);
+	
+			setEvents(formattedEvents);
+
+		}
+
+		getTask();
+	}, [])
+/*
     const events = 
     [{
         title: "event custom",
         start: "2024-02-15T17:00:00",
         end: "2024-02-15T22:00:00",
     }]
-
+*/
     return(
         <>
             <div className="m-2 pt-4">
@@ -45,13 +77,18 @@ function Schedule()
                     {
                         (info) => 
                         {
+							const { detail, username } = info.event.extendedProps;
+							const content = `
+								<p><strong>Detail:</strong> ${detail}</p>
+								<p><strong>Assigned to:</strong> ${username}</p>
+							`;
                             return new bootstrap.Popover(info.el, 
                                 {
                                     title: info.event.title,
                                     placement:"auto",
                                     trigger: "hover",
                                     customClass: "popoverStyle",
-                                    content: "<p>Details for event etc...</p>",
+                                    content: content,
                                     html: true,
                                 })
                         }
