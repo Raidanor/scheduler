@@ -41,7 +41,9 @@ function App()
                 <Route exact path="/schedule" element={<Schedule />}/>
                 <Route exact path="/learner" element={<Learner />} />
 
-                { session ? 
+                { session ?     // just a fancy ternary operator
+                                // returns "/planner" if user is signed in
+                                // returns "accessError" if not
 				    <Route exact path="/planner" element={<Planner key={ session.user.id } session={ session } />} />
                     :
 				    <Route exact path="/accessError" element={<NoPermission />} />
