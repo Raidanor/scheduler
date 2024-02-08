@@ -62,6 +62,10 @@ function Planner( { session } )
 	
     const { user } = session
 
+    //currently the user id is hardcoded
+    // i should change this as this is very bad security
+    // add to the env file and reead from there
+    // could add tthem in array format as well and have multiple users have admin/upper level priviledges
 	return (user.id === "af37dc6f-0dfd-4f03-9b9f-ab4d05aec493") ? (
 		<div className="container mt-5 col-6">
 			<h2 className="mb-4">Add Shift</h2>
