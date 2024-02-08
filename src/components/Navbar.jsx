@@ -17,7 +17,7 @@ function Navbar( { session } )
                             <li className="nav-link"><Link to="/schedule">Schedule</Link></li>
                             <li className="nav-link"><Link to="/learner">Learner</Link></li>
                             
-                            { session ?
+                            { session ?   // just a fancy ternary operator
                                 <li className="nav-link"><Link to="/planner">Planner</Link></li>
                                 :
                                 <></>

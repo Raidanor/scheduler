@@ -12,12 +12,14 @@ function Planner( { session } )
 	const [selectedEmployee, setSelectedEmployee] = useState('');
 
 	useEffect(() => {
-		async function getUsernames(){
+		async function getUsernames()
+        {
 			const { data, error } = await supabase
 			.from('profiles')
 			.select('id, username')
 
-			if (error) {
+			if (error) 
+            {
 				console.error('Error fetching usernames', error);
 				// return [];
 			}
@@ -31,7 +33,8 @@ function Planner( { session } )
 	}, [])
 
 
-	async function handleSubmit(e) {
+	async function handleSubmit(e)
+    {
 		e.preventDefault();
 	
 		const { data, error } = await supabase
@@ -47,7 +50,7 @@ function Planner( { session } )
 				},
 			]);
 	
-		if (error) {
+		if (error){
 		  	console.log('Error:', error.message);
 		} else {
 		  	console.log('Data inserted');
@@ -60,13 +63,16 @@ function Planner( { session } )
 		}
 	};
 	
+    // geting the id of the signed in user
     const { user } = session
 
     //currently the user id is hardcoded
     // i should change this as this is very bad security
     // add to the env file and reead from there
     // could add tthem in array format as well and have multiple users have admin/upper level priviledges
-	return (user.id === "af37dc6f-0dfd-4f03-9b9f-ab4d05aec493") ? (
+
+
+	return (user.id === "af37dc6f-0dfd-4f03-9b9f-ab4d05aec493") ? (     // this is just a very long ternary operator. I may factorise this later to make it more readable
 		<div className="container mt-5 col-6">
 			<h2 className="mb-4">Add Shift</h2>
 			<form onSubmit={ handleSubmit }>
