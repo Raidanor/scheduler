@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom"
 
-function Navbar()
+
+function Navbar( { session } )
 {
     return(
 
@@ -16,7 +17,12 @@ function Navbar()
                         <li className="nav-link active" aria-current="page"><Link to="/" id="home"><a>Home</a></Link></li>
                         <li className="nav-link"><Link to="/schedule">Schedule</Link></li>
                         <li className="nav-link"><Link to="/learner">Learner</Link></li>
-						<li className="nav-link"><Link to="/planner">Planner</Link></li>
+						
+                        { session ?
+                            <li className="nav-link"><Link to="/planner">Planner</Link></li>
+                            :
+                            <></>
+                        }
                         
                         {/* <a className="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a> */}
                     </ul>

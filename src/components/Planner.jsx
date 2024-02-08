@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient'
 
-function Planner(){
+function Planner( { session } )
+{
 	const [usernameList, setUsernameList] = useState([]);
 	const [detail, setDetail] = useState('');
 	const [title, setTitle] = useState('');
@@ -18,7 +19,7 @@ function Planner(){
 
 			if (error) {
 				console.error('Error fetching usernames', error);
-				return [];
+				// return [];
 			}
             else
             {
@@ -28,6 +29,7 @@ function Planner(){
 
 		getUsernames();
 	}, [])
+
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -58,8 +60,9 @@ function Planner(){
 		}
 	};
 	
+    const { user } = session
 
-	return (
+	return (user.id === "af37dc6f-0dfd-4f03-9b9f-ab4d05aec493") ? (
 		<div className="container mt-5 col-6">
 			<h2 className="mb-4">Add Shift</h2>
 			<form onSubmit={ handleSubmit }>
@@ -113,6 +116,9 @@ function Planner(){
 						className="form-control"
 						value={ selectedEmployee }
 						onChange={(e) => setSelectedEmployee(e.target.value)}
+
+                        // to enable selection of multiple options
+                        // multiple = "multiple"
 					>
 					<option value="">Choose the employee</option>
 					{usernameList.map((employee) => (
@@ -125,7 +131,13 @@ function Planner(){
 				<button type="submit" className="btn btn-primary mt-5">Assign</button>
 			</form>
 		</div>
-	);
+	)
+    :
+    (
+        <div>
+            You do not have permission to access this page
+        </div>
+    )
 };
 
 export default Planner;
