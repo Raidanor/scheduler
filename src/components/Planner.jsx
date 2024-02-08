@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient'
 
-function Planner(){
+function Planner( { session } )
+{
 	const [usernameList, setUsernameList] = useState([]);
 	const [detail, setDetail] = useState('');
 	const [title, setTitle] = useState('');
@@ -18,15 +19,17 @@ function Planner(){
 
 			if (error) {
 				console.error('Error fetching usernames', error);
-				return [];
+				// return [];
 			}
-
-			setUsernameList(data);
-
+            else
+            {
+                setUsernameList(data);
+            }
 		}
 
 		getUsernames();
 	}, [])
+
 
 	async function handleSubmit(e) {
 		e.preventDefault();
@@ -57,11 +60,16 @@ function Planner(){
 		}
 	};
 	
+    const { user } = session
 
-	return (
-		<div className="container mt-5">
+    //currently the user id is hardcoded
+    // i should change this as this is very bad security
+    // add to the env file and reead from there
+    // could add tthem in array format as well and have multiple users have admin/upper level priviledges
+	return (user.id === "af37dc6f-0dfd-4f03-9b9f-ab4d05aec493") ? (
+		<div className="container mt-5 col-6">
 			<h2 className="mb-4">Add Shift</h2>
-			<form onSubmit={handleSubmit}>
+			<form onSubmit={ handleSubmit }>
 				<div className="form-group">
 					<label>Title:</label>
 					<input
@@ -76,7 +84,7 @@ function Planner(){
 					<textarea
 					className="form-control"
 					value={detail}
-					onChange={(e) => setDetail(e.target.value)}
+					onChange={(e) => setDetail( e.target.value )}
 					></textarea>
 				</div>
 				<div className="form-group">
@@ -110,8 +118,11 @@ function Planner(){
 					<label>Employee:</label>
 					<select
 						className="form-control"
-						value={selectedEmployee}
+						value={ selectedEmployee }
 						onChange={(e) => setSelectedEmployee(e.target.value)}
+
+                        // to enable selection of multiple options
+                        // multiple = "multiple"
 					>
 					<option value="">Choose the employee</option>
 					{usernameList.map((employee) => (
@@ -124,7 +135,13 @@ function Planner(){
 				<button type="submit" className="btn btn-primary mt-5">Assign</button>
 			</form>
 		</div>
-	);
+	)
+    :
+    (
+        <div>
+            You do not have permission to access this page
+        </div>
+    )
 };
 
 export default Planner;

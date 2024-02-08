@@ -47,7 +47,8 @@ export default function Account({ session })
         }
     }, [session])
 
-    async function updateProfile(event, avatarUrl) {
+    async function updateProfile(event, avatarUrl)
+    {
         event.preventDefault()
 
         setLoading(true)
@@ -128,7 +129,7 @@ export default function Account({ session })
                     type="int"
                     value={mobile_number || ''}
                     required
-                    placeholder='11122223333(No dashes)'
+                    placeholder = '11122223333(No dashes)'
                     onChange={(e) => setMobile_number(e.target.value)}
                 />
             </div>

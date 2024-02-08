@@ -34,7 +34,6 @@ body,
 
 
 @media only screen and (min-width: 45em) {
-  /* 720px */
   .col-1 {
     width: 4.33%;
   }
@@ -76,20 +75,13 @@ body,
   }
 }
 
-@media only screen and (min-width: 60em) {
-  /* 960px */
-  .container {
-    width: 75%;
-    max-width: 60rem;
-  }
-}
 
 /* Forms */
 
 label {
   display: block;
   margin: 5px 0;
-  color: var(--custom-color-secondary);
+  /* color: var(--custom-color-secondary); */
   font-size: 0.8rem;
   text-transform: uppercase;
 }
@@ -303,7 +295,14 @@ button.primary,
 .nav-link
 {
     border-top: 4px solid #ffffff00;
+    text-decoration: none;
 }
+
+.nav-link a
+{
+    text-decoration: none;
+}
+
 .nav-link:not(:last-child)
 {
     border-right: 1px solid;

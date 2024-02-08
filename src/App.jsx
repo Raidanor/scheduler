@@ -9,6 +9,7 @@ import Navbar from './components/Navbar'
 import Schedule from './components/Schedule'
 import Learner from './components/Learner'
 import Planner from './components/Planner'
+import NoPermission from './components/NoPermission'
 
 
 
@@ -34,12 +35,17 @@ function App()
 
     return (
         <BrowserRouter>
-            <Navbar />
+            <Navbar session={ session } />
             <Routes>
                 <Route exact path="/" element={<Login session={ session }/>}/>
                 <Route exact path="/schedule" element={<Schedule />}/>
                 <Route exact path="/learner" element={<Learner />} />
-				<Route exact path="/planner" element={<Planner />} />
+
+                { session ? 
+				    <Route exact path="/planner" element={<Planner key={ session.user.id } session={ session } />} />
+                    :
+				    <Route exact path="/accessError" element={<NoPermission />} />
+                }
                 
                 
                 {/* <Route exact path="/" element={<Account key={ session.user.id } session={ session} />}/> */}
@@ -56,7 +62,7 @@ function Login( props )
 {
     return(
         <div className="container" style={{ padding: '50px 0 100px 0' }}>
-            {!props.session ? <Auth /> : <Account key={ props.session.user.id } session={ props.session} />}
+            {!props.session ? <Auth /> : <Account key={ props.session.user.id } session={ props.session} /> }
         </div>
     )
 

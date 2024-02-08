@@ -70,7 +70,7 @@ function Learner()
         <>
             <div className="container-fluid pt-3">
                 <div className="row">
-                    <div className="col-6 border m-2">
+                    <div className="border m-2 col-6">
                         <div>
                             This list contains the firstname, lastname and school of everyone who was born in the year 2020
                         </div>
