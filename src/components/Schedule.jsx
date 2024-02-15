@@ -59,9 +59,10 @@ function Schedule()
         end: "2024-02-15T22:00:00",
     }]
 */
-    function handleClickOnEvent()
+    function handleClickOnEvent( arg )
     {
         alert("This event has been clicked")
+        console.log("title is: " + arg.event.title)
     }
     return(
         <>
