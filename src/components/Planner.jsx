@@ -9,7 +9,7 @@ function Planner( { session } )
 	const [date, setDate] = useState('');
 	const [startTime, setStartTime] = useState('');
 	const [endTime, setEndTime] = useState('');
-	const [selectedEmployee, setSelectedEmployee] = useState('');
+	const [selectedEmployee, setSelectedEmployee] = useState([]);
 
 	useEffect(() => {
 		async function getUsernames()
@@ -38,7 +38,7 @@ function Planner( { session } )
 		e.preventDefault();
 	
 		const { data, error } = await supabase
-			.from('task')
+			.from('events')
 			.insert([
 				{
 					title: title,
@@ -71,6 +71,8 @@ function Planner( { session } )
     // add to the env file and reead from there
     // could add tthem in array format as well and have multiple users have admin/upper level priviledges
 
+    // supabase function that checks user id
+    // rerube yes or no
 
 	return (user.id === "af37dc6f-0dfd-4f03-9b9f-ab4d05aec493") ? (     // this is just a very long ternary operator. I may factorise this later to make it more readable
 		<div className="container mt-5 col-6">
@@ -126,13 +128,13 @@ function Planner( { session } )
 						className="form-control"
 						value={ selectedEmployee }
 						onChange={(e) => setSelectedEmployee(e.target.value)}
-
+                        
                         // to enable selection of multiple options
                         // multiple = "multiple"
 					>
 					<option value="">Choose the employee</option>
 					{usernameList.map((employee) => (
-						<option key={employee.id} value={employee.username}>
+						<option key={employee.id} value={employee.username} >
 							{employee.username}
 						</option>
 					))}

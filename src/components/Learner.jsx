@@ -42,6 +42,11 @@ function Learner()
     async function getSchoolAcademy()
     {
         var temp = 'crime university'
+
+
+
+
+        
         const { data, error } = await supabase
             .from('test')
             .select('firstname, yearofbirth')
