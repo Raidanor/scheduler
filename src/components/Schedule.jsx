@@ -25,7 +25,7 @@ function Schedule()
 	useEffect(() => {
 		async function getTask(){
 			const { data, error } = await supabase
-			.from('task')
+			.from('events')
 			.select('id, title, detail, date, start_time, end_time, username')
 
 			if (error) {
@@ -33,14 +33,14 @@ function Schedule()
 				return [];
 			}
 
-			const formattedEvents = data.map(task => ({
-				id: task.id,
-				title: task.title,
-				start: task.date + 'T' + task.start_time,
-				end: task.date + 'T' + task.end_time,
+			const formattedEvents = data.map(events => ({
+				id: events.id,
+				title: events.title,
+				start: events.date + 'T' + events.start_time,
+				end: events.date + 'T' + events.end_time,
 				extendedProps: {
-					detail: task.detail,
-					username: task.username
+					detail: events.detail,
+					username: events.username
 				}
 			}));
 			console.log(data);
@@ -59,6 +59,10 @@ function Schedule()
         end: "2024-02-15T22:00:00",
     }]
 */
+    function handleClickOnEvent()
+    {
+        alert("This event has been clicked")
+    }
     return(
         <>
             <div className="m-2 pt-4">
@@ -99,6 +103,9 @@ function Schedule()
                         center: "today prev,next",
                         end: "dayGridMonth, timeGridWeek timeGridDay"
                     }}
+
+                    eventClick= { handleClickOnEvent }
+
                     height = {"90vh"}
                     // dateClick={handleDateClick}
                 />

@@ -37,8 +37,8 @@ function App()
         <BrowserRouter>
             <Navbar session={ session } />
             <Routes>
-                <Route exact path="/" element={<Login session={ session }/>}/>
-                <Route exact path="/schedule" element={<Schedule />}/>
+                <Route exact path="/" element={<Login session={ session }/>} />
+                <Route exact path="/schedule" element={<Schedule />} />
                 <Route exact path="/learner" element={<Learner />} />
 
                 { session ?     // just a fancy ternary operator
