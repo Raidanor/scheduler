@@ -26,7 +26,7 @@ function Schedule()
 		async function getTask(){
 			const { data, error } = await supabase
 			.from('events')
-			.select('id, title, detail, date, start_time, end_time, username')
+			.select('id, title, detail, date, start_time, end_time, usernames')
 
 			if (error) {
 				console.error('Error fetching data', error);
@@ -40,7 +40,7 @@ function Schedule()
 				end: events.date + 'T' + events.end_time,
 				extendedProps: {
 					detail: events.detail,
-					username: events.username
+					usernames: events.usernames
 				}
 			}));
 			console.log(data);
@@ -82,10 +82,10 @@ function Schedule()
                     {
                         (info) => 
                         {
-							const { detail, username } = info.event.extendedProps;
+							const { detail, usernames } = info.event.extendedProps;
 							const content = `
 								<p><strong>Detail:</strong> ${detail}</p>
-								<p><strong>Assigned to:</strong> ${username}</p>
+								<p><strong>Assigned to:</strong> ${usernames}</p>
 							`;
                             return new bootstrap.Popover(info.el, 
                                 {
