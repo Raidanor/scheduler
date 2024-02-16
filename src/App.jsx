@@ -12,7 +12,6 @@ import Planner from './components/Planner'
 import NoPermission from './components/NoPermission'
 
 
-
 //react routing
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 

@@ -43,7 +43,7 @@ function Schedule()
 					usernames: events.usernames
 				}
 			}));
-			console.log(data);
+			//console.log(data);
 	
 			setEvents(formattedEvents);
 

@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import Select from 'react-select';
+import { list } from "../adminList"
+import NoPermission from './NoPermission';
+
 
 function Planner( { session } )
 {
@@ -75,16 +78,25 @@ function Planner( { session } )
 		  color: 'black',
 		}),
 	};
-	
-    // geting the id of the signed in user
-    const { user } = session
 
-    //currently the user id is hardcoded
-    // i should change this as this is very bad security
-    // add to the env file and reead from there
-    // could add tthem in array format as well and have multiple users have admin/upper level priviledges
+    function getUserId()
+    {
+        // geting the id of the signed in user
+        const { user } = session
 
-	return(
+        const adminList =   
+        [
+            "dc1a0207-c86f-43da-bee9-019c27352b0a",
+            "255710a3-c965-437a-bc6b-03bbbd2b47df",
+            "af37dc6f-0dfd-4f03-9b9f-ab4d05aec493",
+            "ef1ebf8d-f25b-4030-8e81-d3e574f5128b"
+        ]
+        const valid = adminList.includes(user.id)
+
+        return valid
+    }
+
+	return( getUserId() ? (
 		<div className="container mt-5 col-6">
 			<h2 className="mb-4">Add Shift</h2>
 			<form onSubmit={ handleSubmit }>
@@ -148,6 +160,9 @@ function Planner( { session } )
 				<button type="submit" className="btn btn-primary mt-5">Assign</button>
 			</form>
 		</div>
+        )
+        :
+        ( <NoPermission /> )
 	)
 
 	/*

@@ -32,7 +32,7 @@ function Learner()
             setYear(data)
             setFetchError(null)
 
-            console.log("data set!! year")
+            // console.log("data set!! year")
         }
     }
 
@@ -65,7 +65,7 @@ function Learner()
             setSchool(data)
             setFetchError(null)
 
-            console.log("data set crime!!")
+            // console.log("data set crime!!")
         }
     }
 
