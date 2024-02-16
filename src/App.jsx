@@ -35,6 +35,7 @@ function App()
     return (
         <BrowserRouter>
             <Navbar session={ session } />
+            <br/>
             <Routes>
                 <Route exact path="/" element={<Login session={ session }/>} />
                 <Route exact path="/schedule" element={<Schedule />} />
