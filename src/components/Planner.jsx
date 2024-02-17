@@ -7,6 +7,9 @@ import NoPermission from './NoPermission';
 // for push notif
 import addNotification from "react-push-notification";
 
+//logo
+import logo from "../assets/2B_icon.png" 
+
 
 function Planner( { session } )
 {
@@ -92,7 +95,8 @@ function Planner( { session } )
                 message: "The schedule has been updated",
                 theme: "darkblue",
                 duration: 15000,
-                native: true
+                native: true,
+                icon: logo
             }
         )
     }
