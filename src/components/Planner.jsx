@@ -1,8 +1,11 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import Select from 'react-select';
-import { list } from "../adminList"
+// import { list } from "../adminList"
 import NoPermission from './NoPermission';
+
+// for push notif
+import addNotification from "react-push-notification";
 
 
 function Planner( { session } )
@@ -61,6 +64,7 @@ function Planner( { session } )
 	
 		if (error){
 		  	console.log('Error:', error.message);
+            alert("Please input all fields correctly")
 		} else {
 		  	console.log('Data inserted');
 			alert("Added!");
@@ -79,7 +83,21 @@ function Planner( { session } )
 		}),
 	};
 
-    function getUserId()
+    const pushTest = () =>
+    {
+        addNotification(
+            {
+                title: "This is a notification",
+                subtitle: "This is the subtitle",
+                message: "The schedule has been updated",
+                theme: "darkblue",
+                duration: 15000,
+                native: true
+            }
+        )
+    }
+
+    async function getUserId()
     {
         // geting the id of the signed in user
         const { user } = session
@@ -159,6 +177,7 @@ function Planner( { session } )
 				</div>
 				<button type="submit" className="btn btn-primary mt-5">Assign</button>
 			</form>
+            <button onClick={ pushTest }>Push test</button>
 		</div>
         )
         :

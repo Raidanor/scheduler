@@ -15,11 +15,14 @@ import NoPermission from './components/NoPermission'
 //react routing
 import { BrowserRouter, Route, Routes } from "react-router-dom"
 
+//for push notif
+import { Notifications } from "react-push-notification";
+
+
 
 function App()
 {
     const [session, setSession] = useState(null)
-
     useEffect(() => {
         supabase.auth.getSession().then(({ data: { session } }) =>
         {
@@ -31,10 +34,14 @@ function App()
             setSession(session)
         })
     }, [])
+    
+    //----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+    // Notification Code
 
     return (
         <BrowserRouter>
             <Navbar session={ session } />
+            <Notifications />
             <br/>
             <Routes>
                 <Route exact path="/" element={<Login session={ session }/>} />

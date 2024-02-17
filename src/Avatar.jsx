@@ -11,21 +11,17 @@ export default function Avatar( { url, size, onUpload })
     //check to see if user is already logged in
     //const user = supabase.auth.user()
 
-    useEffect( () => 
-    {
-        if (url)
-        {
-            downloadImage(url)
-        }
-    }, [url])
+    useEffect( () => { if (url) downloadImage(url)}, [url])
 
     async function downloadImage(path)
     {
         try
         {
+            console.log("path: " + path)
             //for some reason this function does not work
             //avatar image cannot be displayed thus
             const { data, error } = await supabase.from('avatars').download(path)
+            
 
             if (error)
             {
@@ -48,7 +44,7 @@ export default function Avatar( { url, size, onUpload })
 
             if (!event.target.files || event.target.files.length === 0 )
             {
-                throw new Error("You mustt select an image to upload")
+                throw new Error("You must select an image to upload")
             }
 
             const file = event.target.files[0]

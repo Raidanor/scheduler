@@ -111,7 +111,6 @@ function Schedule()
                     // dateClick={handleDateClick}
                 />
             </div>
-            
         </>
     )
 }
