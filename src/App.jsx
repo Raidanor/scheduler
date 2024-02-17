@@ -46,7 +46,6 @@ function App()
             <Routes>
                 <Route exact path="/" element={<Login session={ session }/>} />
                 <Route exact path="/schedule" element={<Schedule />} />
-                <Route exact path="/learner" element={<Learner />} />
 
                 { session ?     // just a fancy ternary operator
                                 // returns "/planner" if user is signed in
@@ -56,11 +55,6 @@ function App()
 				    <Route exact path="/accessError" element={<NoPermission />} />
                 }
                 
-                
-                {/* <Route exact path="/" element={<Account key={ session.user.id } session={ session} />}/> */}
-                
-                
-
             </Routes>
         </BrowserRouter>
         

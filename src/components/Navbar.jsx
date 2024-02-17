@@ -15,7 +15,6 @@ function Navbar( { session } )
                         <ul className="navbar-nav ml-auto">
                             <li className="nav-link active" aria-current="page"><Link to="/" id="home"><a>Home</a></Link></li>
                             <li className="nav-link"><Link to="/schedule">Schedule</Link></li>
-                            <li className="nav-link"><Link to="/learner">Learner</Link></li>
                             
                             { session ?   // just a fancy ternary operator
                                 <li className="nav-link"><Link to="/planner">Planner</Link></li>
