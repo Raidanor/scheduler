@@ -15,30 +15,47 @@ function Planner( { session } )
 	const [endTime, setEndTime] = useState('');
 	const [selectedEmployees, setSelectedEmployees] = useState([]);
 
+	const [users, setUsers] = useState([]);
+
 	useEffect(() => {
-		async function getUsernames()
-        {
-			const { data, error } = await supabase
+		const fetchUsersAndRoles = async () => {
+			const { data: profiles, error: profilesError } = await supabase
 			.from('profiles')
-			.select('id, username')
-
-			if (error) 
-            {
-				console.error('Error fetching usernames', error);
-				// return [];
+			.select('username');
+			
+			if (profilesError) {
+				console.error(profilesError);
+				return;
 			}
-            else
-            {
-				const formattedData = data.map(user => ({
-                    value: user.username,
-                    label: user.username
-                }));
-                setUsernameList(formattedData);
-            }
-		}
-
-		getUsernames();
-	}, [])
+				  			  
+			const usersWithRoles = await Promise.all(profiles.map(async (profile) => {
+				const { data: rolesAssigned, error: rolesAssignedError } = await supabase
+					.from('roles-assigned')
+					.select(`
+						roles_id:roles(id, description)
+					`)
+					.match({ profiles_username: profile.username });
+		
+				if (rolesAssignedError) {
+					console.error(rolesAssignedError);
+					return { ...profile, roles: null };
+				}
+		
+				const roles = rolesAssigned.length > 0 ? rolesAssigned.map(ra => ra.roles_id.description) : null;
+		
+				return { ...profile, roles };
+			}));
+		
+			const options = usersWithRoles.map(user => ({
+				value: user.username,
+				label: user.username + (user.roles && user.roles.length ? ' (' + user.roles.join(', ') + ')' : '(No roles)'),
+			}));
+			setUsers(options);
+		};
+	
+		fetchUsersAndRoles();
+		console.log("users", users);
+	}, []);
 
 	async function handleSubmit(e)
     {
@@ -78,6 +95,7 @@ function Planner( { session } )
 		  color: 'black',
 		}),
 	};
+
 
     function getUserId()
     {
@@ -149,7 +167,7 @@ function Planner( { session } )
 					<Select
 						isMulti
 						name="employees"
-						options={usernameList}
+						options={users}
 						className="basic-multi-select"
 						classNamePrefix="select"
 						onChange={(selectedOptions) => setSelectedEmployees(selectedOptions)}
