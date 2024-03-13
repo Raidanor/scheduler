@@ -27,6 +27,7 @@ function Schedule()
 			const { data, error } = await supabase
 			.from('events')
 			.select('id, title, detail, date, start_time, end_time, usernames')
+            // .gte('created_at', new Date())
 
 			if (error) {
 				console.error('Error fetching data', error);
@@ -46,6 +47,8 @@ function Schedule()
 			//console.log(data);
 	
 			setEvents(formattedEvents);
+            var dd = String(today.getDate()).padStart(2, '0');
+            console.log(dd)
 
 		}
 

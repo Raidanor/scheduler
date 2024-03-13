@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { supabase } from '../supabaseClient';
 import Select from 'react-select';
-// import { list } from "../adminList"
 import NoPermission from './NoPermission';
 
 // for push notif
@@ -171,17 +170,17 @@ function Planner( { session } )
 					<Select
 						isMulti
 						name="employees"
-						options={usernameList}
+						options={ usernameList }
 						className="basic-multi-select"
 						classNamePrefix="select"
 						onChange={(selectedOptions) => setSelectedEmployees(selectedOptions)}
-						value={selectedEmployees}
-						styles={customStyles}
+						value={ selectedEmployees }
+						styles={ customStyles }
 					/>
 				</div>
-				<button type="submit" className="btn btn-primary mt-5">Assign</button>
+				<button type="submit" className="btn btn-primary m-5">Assign</button>
 			</form>
-            <button onClick={ pushTest }>Push test</button>
+            <button onClick={ pushTest } className="">Push test</button>
 		</div>
         )
         :
