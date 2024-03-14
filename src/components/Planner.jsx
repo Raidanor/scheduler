@@ -97,22 +97,36 @@ function Planner( { session } )
 	};
 
 
-    function getUserId()
+    async function getUserId()
     {
         // geting the id of the signed in user
-        const { user } = session
+        const { user } = session;
 
-        const adminList =   
-        [
-            "dc1a0207-c86f-43da-bee9-019c27352b0a",
-            "255710a3-c965-437a-bc6b-03bbbd2b47df",
-            "af37dc6f-0dfd-4f03-9b9f-ab4d05aec493",
-            "ef1ebf8d-f25b-4030-8e81-d3e574f5128b"
-        ]
-        const valid = adminList.includes(user.id)
+        //const adminList =   
+        //[
+        //    "dc1a0207-c86f-43da-bee9-019c27352b0a",
+        //    "255710a3-c965-437a-bc6b-03bbbd2b47df",
+        //    "af37dc6f-0dfd-4f03-9b9f-ab4d05aec493",
+        //    "ef1ebf8d-f25b-4030-8e81-d3e574f5128b"
+        //]
+        //const valid = adminList.includes(user.id)
 
-        return valid
-    }
+        //return valid
+		const { data: admin, error } = await supabase
+		.from('admin')
+		.select('user_id')
+		.eq('user_id', user.id);
+	
+		if (error) 
+            {
+				console.error('Error fetching admin', error);
+				// return [];
+			}
+        else {
+			const valid = (admin.user_id == user.id);
+			return valid;
+		}
+    };
 
 	return( getUserId() ? (
 		<div className="container mt-5 col-6">
@@ -181,7 +195,7 @@ function Planner( { session } )
         )
         :
         ( <NoPermission /> )
-	)
+	);
 
 	/*
 	return (user.id === "af37dc6f-0dfd-4f03-9b9f-ab4d05aec493") ? (     // this is just a very long ternary operator. I may factorise this later to make it more readable
