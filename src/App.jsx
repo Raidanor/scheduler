@@ -38,8 +38,12 @@ function App()
             <br/>
             <Routes>
                 <Route exact path="/" element={<Login session={ session }/>} />
-                <Route exact path="/schedule" element={<Schedule />} />
-                <Route exact path="/learner" element={<Learner />} />
+				{ session ?
+				    <Route exact path="/schedule" element={<Schedule key={ session.user.id } session={ session }/>} />
+                    :
+				    <Route exact path="/accessError" element={<NoPermission />} />
+                }
+			    <Route exact path="/learner" element={<Learner />} />
 
                 { session ?     // just a fancy ternary operator
                                 // returns "/planner" if user is signed in
