@@ -33,7 +33,7 @@ function Schedule( { session } )
 	  "af37dc6f-0dfd-4f03-9b9f-ab4d05aec493",
 	  "ef1ebf8d-f25b-4030-8e81-d3e574f5128b"
 	];
-	console.log("session: ", session);
+	//console.log("session: ", session);
 
 
 
@@ -90,10 +90,15 @@ function Schedule( { session } )
 		}*/
 		console.log("check: ", eventToDelete);
 		
-		const { error } = await supabase
+		const { data, error } = await supabase
 			.from("events")
-			.delete()
-			.match({ id: eventToDelete });
+			// .delete()
+            .select()
+			.eq('id', eventToDelete)
+
+        console.log(data)
+        console.log("event DELETED!");
+        setEventToDelete(null);
 		
 		if (error) {
 		  	alert("Error");
