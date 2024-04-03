@@ -150,6 +150,7 @@ function Schedule( { session } )
 								let deleteButton = document.createElement('button');
 								deleteButton.innerText = 'Delete';
 								deleteButton.style.marginLeft = '5px';
+                                deleteButton.style.backgroundColor = 'red';
 								deleteButton.onclick = () => openModalToDeleteEvent(info.event.id);
 								info.el.append(deleteButton);
 							}
