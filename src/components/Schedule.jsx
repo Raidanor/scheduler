@@ -92,8 +92,7 @@ function Schedule( { session } )
 		
 		const { data, error } = await supabase
 			.from("events")
-			// .delete()
-            .select()
+			.delete()
 			.eq('id', eventToDelete)
 
         console.log(data)

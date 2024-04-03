@@ -4,6 +4,8 @@ import Select from 'react-select';
 import { list } from "../adminList"
 import NoPermission from './NoPermission';
 
+import addNotification from 'react-push-notification';
+import logo from "../assets/2B_icon.png";
 
 function Planner( { session } )
 {
@@ -86,6 +88,15 @@ function Planner( { session } )
 			setStartTime('');
 			setEndTime('');
 			setDate('');
+
+            addNotification({
+                    title: "Shift Added",
+                    message: "A shift has been added. Check the schedule",
+                    duration: 5000,
+                    icon: logo,
+                    native: true
+                }
+            )
 		}
 	};
 
